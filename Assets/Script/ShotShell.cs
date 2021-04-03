@@ -16,9 +16,11 @@ public class ShotShell : MonoBehaviour
     public int shotCount;
     [SerializeField]
     private Text shellLabel;
+    public int shotMaxCount = 20;
 
     void Start()
     {
+        shotCount = shotMaxCount;
         shellLabel.text = "砲弾:" + shotCount;
     }
 
@@ -36,5 +38,16 @@ public class ShotShell : MonoBehaviour
             Destroy(shell, 3.0f); //発射した砲弾を３秒後に破壊する,不要になった砲弾はメモリー上から削除する                                
             AudioSource.PlayClipAtPoint(shotSound, transform.position); //砲弾の発射音を出す
         }
+    }
+
+    public void AddShell(int amount)
+    {
+        shotCount += amount; //
+
+        if(shotCount > shotMaxCount) //
+        {
+            shotCount = shotMaxCount;
+        }
+        shellLabel.text = "砲弾:" + shotCount;
     }
 }

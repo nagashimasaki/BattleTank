@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TankHealth : MonoBehaviour
 {
@@ -10,12 +11,20 @@ public class TankHealth : MonoBehaviour
     [SerializeField]
     private GameObject effectPrefab2;
     public int tankHP;
+    [SerializeField]
+    private Text HPLabel;
+
+    void Start()
+    {
+        HPLabel.text = "HP:" + tankHP;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyShell")
         {
             tankHP -= 1;
+            HPLabel.text = "HP:" + tankHP;
             Destroy(other.gameObject);
 
             if (tankHP > 0)
