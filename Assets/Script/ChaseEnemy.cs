@@ -16,7 +16,7 @@ public class ChaseEnemy : MonoBehaviour
 
     void Update()
     {
-        if (target != null)
+        if (target != null) //ターゲットの情報が入っていたら
         {
             agent.destination = target.transform.position; //ターゲットの位置を目的地に設定する
         }

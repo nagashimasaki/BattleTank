@@ -36,7 +36,7 @@ public class TankHealth : MonoBehaviour
             {
                 GameObject effect2 = Instantiate(effectPrefab2, transform.position, Quaternion.identity);
                 Destroy(effect2, 1.0f);
-                //Destroy(gameObject);
+                Destroy(gameObject);
 
                 this.gameObject.SetActive(false); //プレイヤーを破壊せずに画面から見えなくする。
                                                   //プレイヤーを破壊すると、その時点でメモリー上から消えるので、以降のコードが実行されない。
