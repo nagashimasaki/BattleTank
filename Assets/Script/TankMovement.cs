@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class TankMovement : MonoBehaviour
 {
+    [Header("戦車の動く速さ")]
     public float moveSpeed;
+    [Header("戦車の旋回する速さ")]
     public float turnSpeed;
     private Rigidbody rb;
     private float movementInputValue;
     private float turnInputValue;
-    private float defaultMoveSpped;
-    public float timer = 0f;
+
+    private float defaultMoveSpped;   
+    //インスペクターで操作する時にどこの操作をする部分か分かるように付ける
     [Header("移動速度変更の持続時間")]
     public float duration;
-    public bool isCengSpped;
+    public float timer = 0f;
+    public bool isChengSpped;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
         //現在のスピードを保存
         defaultMoveSpped = moveSpeed;
     }
@@ -28,7 +33,7 @@ public class TankMovement : MonoBehaviour
         TankTurn();
 
         //移動速度が変更中だったら
-        if (isCengSpped == true) 
+        if (isChengSpped == true) 
         {
             timer -= Time.deltaTime;
             if (timer < 0)
@@ -39,15 +44,21 @@ public class TankMovement : MonoBehaviour
             }
         }
     }
-   
-    void TankMove() //前進・後退のメソッド
+
+    /// <summary>
+    /// 前進・後退のメソッド
+    /// </summary>
+    void TankMove() 
     {
         movementInputValue = Input.GetAxis("Vertical");
         Vector3 movement = transform.forward * movementInputValue * moveSpeed * Time.deltaTime;
         rb.MovePosition(rb.position + movement);
     }
-  
-    void TankTurn()  //旋回のメソッド
+
+    /// <summary>
+    /// 旋回のメソッド
+    /// </summary>
+    void TankTurn()  
     {
         turnInputValue = Input.GetAxis("Horizontal");
         float turn = turnInputValue * turnSpeed * Time.deltaTime;
@@ -62,7 +73,7 @@ public class TankMovement : MonoBehaviour
     public void ChengMoveSpped(float newMoveSpped)
     {
         //移動速度を変更中の状態にする
-        isCengSpped = true;
+        isChengSpped = true;
         //変更時間をセット
         timer = duration;       
         //新しいスピードに変更
@@ -76,7 +87,7 @@ public class TankMovement : MonoBehaviour
     public void DefaltMoveSpped()
     {
         //移動速度を変更中ではない状態にする
-        isCengSpped = false;
+        isChengSpped = false;
         moveSpeed = defaultMoveSpped;
         Debug.Log("移動スピード変更:" + moveSpeed);
     }

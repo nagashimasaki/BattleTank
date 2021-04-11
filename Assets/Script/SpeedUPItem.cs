@@ -10,20 +10,11 @@ public class SpeedUPItem : MonoBehaviour
     [SerializeField]
     private GameObject effectPrefab;
     public float sppedUP = 10.0f;
-    
-    void Update()
-    {
-        
-    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            //for (int i = 0; i < targets.Length; i++)
-            //{
-            //    //targets[i].GetComponent<TankMovement>().(5.0f);
-            //}
             other.gameObject.GetComponent<TankMovement>().ChengMoveSpped(sppedUP);
             Destroy(gameObject);
             AudioSource.PlayClipAtPoint(getSound, transform.position);

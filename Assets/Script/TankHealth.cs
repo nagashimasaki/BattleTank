@@ -38,8 +38,7 @@ public class TankHealth : MonoBehaviour
                 Destroy(effect2, 1.0f);
                 Destroy(gameObject);
 
-                this.gameObject.SetActive(false); //プレイヤーを破壊せずに画面から見えなくする。
-                                                  //プレイヤーを破壊すると、その時点でメモリー上から消えるので、以降のコードが実行されない。
+                this.gameObject.SetActive(false); //プレイヤーを破壊せずに画面から見えなくする。プレイヤーを破壊すると、その時点でメモリー上から消えるので、以降のコードが実行されない。
                 Invoke("GoToGameOver", 1.5f);
             }
         }
