@@ -8,6 +8,7 @@ TagManager:
   - Enemyshell
   - EnemyShell
   - EnemyShotShell
+  - Enemy
   layers:
   - Default
   - TransparentFX
