@@ -31,7 +31,7 @@ public class ZoomController : MonoBehaviour
         if (Input.GetKey(KeyCode.RightShift))
         {
             //ズームアップのスピード。
-            zoom -= 1.2f;
+            zoom -= 3.0f;
 
             if (zoom < -40f)  
             {

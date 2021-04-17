@@ -23,6 +23,7 @@ public class TankHealth : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyShell")
         {
+            Debug.Log("ダメージ");
             tankHP -= 1;
             HPLabel.text = "HP:" + tankHP;
             Destroy(other.gameObject);
