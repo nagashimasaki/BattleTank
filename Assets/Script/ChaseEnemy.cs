@@ -5,20 +5,27 @@ using UnityEngine.AI;
 
 public class ChaseEnemy : MonoBehaviour
 {
+    //ターゲットにするゲームオブジェクトの情報を入れる箱を作る
     [SerializeField]
-    private GameObject target;
+    public GameObject target;
+
+    //NavMeshAgent コンポーネントの情報を扱うための変数
     private NavMeshAgent agent;
     
     void Start()
     {
+        //NavMeshAgentコンポーネントはゲームオブジェクトを自動的に移動させる情報を持っている
+        //agent 変数でNavMeshAgentコンポーネントの情報を使えるようにする
         agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
     {
-        if (target != null) //ターゲットの情報が入っていたら
+        //ターゲットの情報が入っていたら
+        if (target != null) 
         {
-            agent.destination = target.transform.position; //ターゲットの位置を目的地に設定する
+            //ターゲットの位置を目的地に設定する
+            agent.destination = target.transform.position; 
         }
     }
 }
