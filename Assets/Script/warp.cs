@@ -8,6 +8,10 @@ public class warp : MonoBehaviour
     [SerializeField]
     private GameObject destinationPos;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         //侵入してきたゲームオブジェクトがプレイヤーだったら
@@ -16,7 +20,5 @@ public class warp : MonoBehaviour
             //指定した地点に移動させる
             other.gameObject.transform.position = destinationPos.transform.position;
         }
-
-
     }
 }
