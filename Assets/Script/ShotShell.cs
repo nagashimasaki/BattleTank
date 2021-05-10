@@ -26,8 +26,11 @@ public class ShotShell : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime; //タイマーの時間を動かす
-        if (Input.GetKeyDown(KeyCode.Space) && timer > timeBetweenShot && shotCount > 0)   //もしもSpaceキーを押したならば（条件）,Space」の部分を変更することで他にキーにすることができる
+        //タイマーの時間を動かす
+        timer += Time.deltaTime; 
+
+        //もしもSpaceキーを押したならば（条件）,Space」の部分を変更することで他にキーにすることができる
+        if (Input.GetKeyDown(KeyCode.Space) && timer > timeBetweenShot && shotCount > 0)   
         {
             shotCount -= 1;
             shellLabel.text = "砲弾:" + shotCount;
